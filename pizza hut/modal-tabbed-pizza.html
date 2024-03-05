@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: aqua;
+            font-family: 'inter', sans-serif;
+        }
+
+        .orders{
+            color: #495057;
+            font-size: 14px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .orders__tab-container{
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: -1px;
+            z-index: 1;
+        }
+        
+        .orders__tab{
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            border: none;
+            background-color: #d6d6d6;
+            color: #555;
+            font-size: 14px;
+            text-transform: capitalize;
+            font-weight: 700;
+            padding: 12px 24px;
+            /* transform: translateY(-100%); */
+            border-radius: 5px 5px 0 0;
+
+        }
+
+        .orders__tab--active{
+            background-color: #fff;
+            color: #da291c;
+            padding: 18px;
+        }
+
+        .orders__tab img{
+            width: 30px;
+            height: auto;
+        }
+        
+        .orders__content{
+            display: none;
+        }
+        
+        .orders__content--active{
+            display: block;
+            background-color: #fff;
+            padding: 16px;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .orders__content--2 .content-text span, .orders__content--3 .content-text span{
+            font-weight: 600;
+        }
+
+        .orders__tab--3{
+            position: relative;
+        }
+        
+        .orders__content label{
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .orders__content label:first-child{
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .content-text{
+            text-transform: capitalize;
+            /* font-size: 1px; */
+        }
+
+        .content-text a{
+            color: inherit;
+            font-weight: 600;
+        }
+
+        .content-text span{
+            display: block;
+            margin-top: 16px;
+            margin-left: 4px;
+            text-transform: none;
+        }
+
+        .content-input{
+            position: relative;
+        }
+
+        .content-input input{
+            padding: 12px 16px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            outline: none;
+        }
+
+        .content-input button{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 25%;
+            height: 100%;
+            padding: 6px;
+            cursor: pointer;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            color: #fff;
+            background-color: #0a8020;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            text-transform: capitalize;
+        }
+
+        .content-input button .icon{
+            margin-bottom: 2px;
+            font-size: 16px;
+        }
+
+        .continue{
+            margin: 16px 0 0 4px;
+            font-size: 14px;
+        }
+
+        .content-locate{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-block: 1px solid #dee2e6;
+            padding: 8px 0;
+            margin: 4px 0 4px 4px;
+        }
+
+        .content-locate h4{
+            font-weight: 600;
+            text-transform: capitalize;
+            font-size: 16px;
+        }
+
+        .content-locate .icon{
+            font-weight: 900;
+            font-size: 20px;
+            transition: transform .2s ease;
+        }
+
+        .enter-location{
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .enter-location input, .enter-location button{
+            display: block;
+            width: 100%;
+            outline: none;
+            border-radius: 5px; 
+            line-height: 1.5;
+        }
+        
+        .enter-location input{
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            padding: 12px 16px;
+        }
+
+        .enter-location button{
+            border: none;
+            text-transform: capitalize;
+            color: #fff;
+            background-color: #0a8020;
+            padding: 12px;
+        }
+
+        .close-sharp{
+            font-size: 22px;
+            color: #fff;
+            background-color: rgb(0, 0, 0, 0.4);
+            border-radius: 50%;
+            padding: 2px;
+            position: absolute;
+            top: -12px;
+            right: -11px;
+        }
+    </style>
+</head>
+<body>
+    <div class="orders">
+        <div class="orders__tab-container">
+            <button class="btn orders__tab orders__tab--1 orders__tab--active" data-tab="1"><img src="img/delivery.gif" alt="delivery"><span>delivery</span></button>
+            <button class="btn orders__tab orders__tab--2" data-tab="2"><img src="img/takeaway.gif" alt="take away"><span>take away</span></button>
+            <button class="btn orders__tab orders__tab--3" data-tab="3"><img src="img/calltocollect.svg" alt="call to collect"><span>call to collect</span><ion-icon class="close-sharp" name="close-sharp"></ion-icon></button>
+        </div>
+        
+        <div class="orders__content orders__content--1 orders__content--active">
+            <label>Safe delivery, covered!</label>
+            <label class="content-text">All deliveries are contactless <a href="#">learn more</a><span>Enter your delivery address to start your order</span></label>
+            <div class="content-input">
+                <input type="text" placeholder="Enter your address">
+                <button><ion-icon class="icon" name="location-sharp"></ion-icon><span>Locate me</span></button>
+            </div>
+            <label class="continue">Or continue with</label>
+            <div class="content-locate">
+                <h4>search your location</h4>
+                <ion-icon class="icon arr-down" name="chevron-down-outline"></ion-icon>
+            </div>
+            <div class="enter-location">
+                <input type="search" placeholder="CITY">
+                <input type="search" placeholder="AREA">
+                <button>Select</button>
+            </div>
+        </div>
+        <div class="orders__content orders__content--2">
+            <label>Safe takeaway, covered!</label>
+            <label class="content-text">All our takeaway orders, are now contactless. <a href="#">learn more</a><span>Enter your area name or address to start your order</span></label>
+            <div class="content-input">
+                <input type="text"  placeholder="Enter your address">
+                <button><ion-icon class="icon" name="location-sharp"></ion-icon><span>Locate me</span></button>
+            </div>
+            <label class="continue">Or continue with</label>
+            <div class="content-locate">
+                <h4>search your location</h4>
+                <ion-icon class="icon arr-down" name="chevron-down-outline"></ion-icon>
+            </div>
+            <div class="enter-location">
+                <input type="search" placeholder="CITY">
+                <input type="search" placeholder="AREA">
+                <button>Find nearest store</button>
+            </div>
+        </div>
+        <div class="orders__content orders__content--3">
+            <label>Safe ordering, covered!</label>
+            <label class="content-text">All orders are now contactless. <a href="#">learn more</a><span>Enter your area name or address to start your order</span></label>
+            <div class="content-input">
+                <input type="text"  placeholder="Enter your address">
+                <button><ion-icon class="icon" name="location-sharp"></ion-icon><span>Locate me</span></button>
+            </div>
+            <label class="continue">Or continue with</label>
+            <div class="content-locate">
+                <h4>search your location</h4>
+                <ion-icon class="icon arr-down" name="chevron-down-outline"></ion-icon>
+            </div>
+            <div class="enter-location">
+                <input type="search" placeholder="CITY">
+                <input type="search" placeholder="AREA">
+                <button>Find nearest store</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        ////////////////////////////////
+        // Drop down input field
+        const icons = document.querySelectorAll('.arr-down');
+        const inputField = document.querySelectorAll('.enter-location');
+
+        const transform = function(rotate) {
+            icons.forEach(icon => icon.style.transform = `rotate(${rotate}deg)`);
+        }
+        
+        icons.forEach(icon => icon.addEventListener('click', function(e){
+            inputField.forEach(field => field.classList.toggle('hidden'));
+
+            for(let i = 0; i < inputField.length; i++){
+                inputField[i].classList.contains('hidden') ? transform(-90) : transform(0);
+            }
+        }));
+
+        ////////////////////////////////
+        // Tabbed component
+
+        const tabs = document.querySelectorAll('.orders__tab');
+        const tabsContainer = document.querySelector('.orders__tab-container');
+        const tabsContent = document.querySelectorAll('.orders__content');
+
+        tabsContainer.addEventListener('click', function(e) {
+            const clicked = e.target.closest('.orders__tab');
+            console.log(clicked)
+            // Guard Clause
+            if (!clicked) return;
+
+            // Remove active classes
+            tabs.forEach(t => t.classList.remove('orders__tab--active'));
+            tabsContent.forEach(c => c.classList.remove('orders__content--active'));
+
+            // Activate clicked tab
+            clicked.classList.add('orders__tab--active');
+
+            // Activate content area
+            document.querySelector(`.orders__content--${clicked.dataset.tab}`).classList.add('orders__content--active');
+        })
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

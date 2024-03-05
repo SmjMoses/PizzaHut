@@ -1,0 +1,226 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #ddd;
+    font-family: sans-serif;
+}
+
+.main-header{
+    background-color: #fff;
+}
+
+.head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.logo{
+    width: 200px;
+}
+
+.links{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.items{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.items a:hover{
+    color: #da291c;
+    text-decoration: underline;
+}
+
+.items a, span, .fas{
+    text-decoration: none;
+    color: #3b3737;
+    font-size: 20px;
+}
+
+.fas:hover{
+    color: #da291c;
+}
+
+.links-item1{
+    text-transform: capitalize;
+}
+
+.links-item2 a, span{
+    text-transform: uppercase;
+    color: #95989a;
+    font-size: 17px;
+}
+
+nav{
+    display: flex;
+    padding: 0 20px;
+    border-top: 1px solid #ddd;
+}
+
+nav a{
+    flex: 1;
+    text-decoration: none;
+    color: #3b3737;
+    font-size: 16px;
+    padding: 20px 40px;
+    text-transform: uppercase;
+    border-right: 1px solid #ddd;
+    text-align: center;
+}
+
+nav a:first-child{
+    border-left: 1px solid #ddd;
+}
+
+nav a:hover, .active{
+    background-image: url(img/img-3.png);
+    background-size: cover;
+    color: #da291c;
+    font-weight: bold;
+}
+
+.food-section{
+    margin: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.food-card{
+    /* width: 500px; */
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.food-card:nth-child(9) .card-img{
+    margin-top: 0;
+    margin: 3px;
+    width: 99%;
+}
+
+.card-img{
+    width: 100%;
+    margin-top: 30px;
+    transition: .5s ease;
+}
+
+.card-img:hover{
+    transform: scale(1.2);
+}
+
+.card-text{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.text-area{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-heading{
+    color: #3b3737;
+}
+
+.food-description{
+    color: #95989a;
+}
+
+.btn-area{
+    border-top: 1px solid #ddd;
+    margin-top: auto;
+}
+
+.card-btn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 15px;
+    background-color: #0a8020;
+    border: none;
+    border-radius: 5px;
+}
+
+.card-btn:hover{
+    background-color: #036115;
+}
+
+.card-btn span{
+    color: #fff;
+}
+
+.btn-deal{
+    text-transform: capitalize;
+}
+
+.btn-price{
+    text-transform: uppercase;
+}
+
+.popular-deals{
+    background-color: #fff;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.deals-heading{
+    text-transform: capitalize;
+    font-size: 22px;
+    color: #3b3737;
+    position: relative;
+}
+
+.deals-heading::before, .deals-heading::after{
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 56px;
+    background-color: #ddd;
+}
+
+.img-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.deals-img{
+    border-radius: 3px;
+}
+
+.deals-btn{
+    width: 87%;
+    padding: 15px;
+    font-size: 17px;
+    background-color: #0a8020;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
